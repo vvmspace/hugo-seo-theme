@@ -21,7 +21,7 @@ When the user's browser is running »dark mode«, the dark color scheme will be 
 If you already have a Hugo site on your machine, you can simply add this theme via
 
 ```bash
-git submodule add https://github.com/vvmspace/hugo-seo-theme.git themes/hugo-bearblog
+git submodule add https://github.com/vvmspace/hugo-seo-theme.git themes/hugo-seo-them
 ```
 
 Then, adjust the `hugo.toml` as detailed below.
