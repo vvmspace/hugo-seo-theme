@@ -1,0 +1,6 @@
+{{ if and (strings.HasPrefix .Destination "http") (not (strings.HasPrefix .Destination "https://how2gpt.xyz"))
+}}<a href="#" onClick="window.open('{{ .Destination | safeURL }}')">{{ .Text | safeHTML }}</a>{{
+     else 
+}}<a title="{{ .Text | plainify }}" href="{{ .Destination | safeURL }}">{{ .Text | safeHTML }}</a>{{
+     end
+}}
