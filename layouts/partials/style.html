@@ -132,8 +132,8 @@
 
   @media (prefers-color-scheme: dark) {
     body {
-      background-color: #333;
-      color: #ddd;
+      background-color: #222;
+      color: #ddd
     }
 
     h1,
@@ -147,16 +147,35 @@
       color: #eee;
     }
 
+    nav a {
+      background-color: transparent;
+    }
+
+    h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, nav a, a.tag {
+      text-decoration: none;
+    }
+
     a {
-      color: #8cc2dd;
+      color: #edf;
+      /* background-color: #111; */
+      text-decoration: underline;
+    }
+
+    a.tag, nav a {
+      padding: 14px 14px;
+      border-radius: 7px;
+      margin: 3px;
+      display: inline-block;
+      background-color: #111;
     }
 
     code {
-      background-color: #777;
+      border-radius: 7px;
+      background-color: #111 !important;
     }
 
     pre code {
-      color: #ddd;
+      color: #eee;
     }
 
     blockquote {
