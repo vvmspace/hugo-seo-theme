@@ -1,3 +1,14 @@
 {{ define "main" }}
-{{ .Content }}
+  {{ range .Pages }}
+    <div>
+      <h2><a href="{{ .Permalink }}">{{ with .Title }}{{ . }}{{ else }}{{ .File.BaseFileName | humanize | title }}{{ end }}</a></h2>
+      <p>
+        {{ with .Description }}
+          {{ . | safeHTML }}
+        {{ else }}
+          {{ (index (split .Summary "\n") 0) | safeHTML }}
+        {{ end }}
+      </p>
+    </div>
+  {{ end }}
 {{ end }}
