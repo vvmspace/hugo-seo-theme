@@ -11,4 +11,20 @@
       </p>
     </div>
   {{ end }}
+  <div class="container tagcloud">
+    {{ if ne (len $.Site.Taxonomies.tags) 0 }}
+      {{ $max := add (len (index $.Site.Taxonomies.tags.ByCount 0).Pages) 1 }}
+      {{ $show :=  sub $max (div $max 2) }}
+        {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
+          {{ $tagCount := len $taxonomy.Pages }}
+            {{ if gt $tagCount $show }}
+            {{ $tagClassId := div (mul $tagCount 8) $max }}
+            <a class="tag tag-{{ $tagClassId }}" href="{{ "/tags/" | relURL }}{{ $name | urlize }}" 
+            class="tagcloud-item">
+              #{{ $name }}</sup>
+            </a>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+</div>
 {{ end }}
