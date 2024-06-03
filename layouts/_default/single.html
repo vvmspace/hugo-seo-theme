@@ -9,12 +9,19 @@
   </i>
 </p>
 {{ end }}{{ end }}
+<p class="tagcloud">
+  {{ if ne (len $.Site.Taxonomies.tags) 0 }}
+    {{ $max := add (len (index $.Site.Taxonomies.tags.ByCount 0).Pages) 1 }}
+    {{ range $term := (.GetTerms "tags") }}
+      {{ $tagCount := len $term.Pages }}
+      {{ $tagClassId := div (mul $tagCount 8) $max }}
+      <a title="{{ $term.Name }} | {{ .Site.Title }}" class="tag tag-{{ $tagClassId }}" href="{{ $term.Permalink }}">
+        #{{ $term.Name }}
+      </a>
+    {{ end }}
+  {{ end }}
+</p>
 <content>
   {{ .Content }}
 </content>
-<p>
-  {{ range (.GetTerms "tags") }}
-  <a class="tag" href="{{ .Permalink }}">#{{ .LinkTitle }}</a>
-  {{ end }}
-</p>
 {{ end }}
