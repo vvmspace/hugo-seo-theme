@@ -1,1 +1,6 @@
 {{ if ne .Site.Params.hideMadeWithLine true }}Made with <a href="https://github.com/vvmspace/hugo-seo-theme/">Hugo SEO Theme</a> for <a href="https://how2gpt.xyz">How2GPT.xyz</a>{{ end }}
+{{ with .Site.Params.netlify_deployment_status_badge }}
+<p>
+    <img src="{{ . }}" alt="Netlify Status" />
+</p>
+{{ end }}
