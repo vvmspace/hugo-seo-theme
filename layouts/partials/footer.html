@@ -1,4 +1,20 @@
-{{ if ne .Site.Params.hideMadeWithLine true }}Made with <a href="https://github.com/vvmspace/hugo-seo-theme/">Hugo SEO Theme</a> for <a href="https://how2gpt.xyz">How2GPT.xyz</a>{{ end }}
+<div class="container tagcloud">
+    {{ if ne (len $.Site.Taxonomies.tags) 0 }}
+      {{ $max := add (len (index $.Site.Taxonomies.tags.ByCount 0).Pages) 1 }}
+      {{ $show := div $max 3 }}
+        {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
+          {{ $tagCount := len $taxonomy.Pages }}
+            {{ if gt $tagCount $show }}
+            {{ $tagClassId := div (mul $tagCount 8) $max }}
+            <a class="tag tag-{{ $tagClassId }}" href="{{ "/tags/" | relURL }}{{ $name | urlize }}" 
+            class="tagcloud-item">
+              #{{ $name }}</sup>
+            </a>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+</div>
+{{ if ne .Site.Params.hideMadeWithLine true }}<p>Made with <a href="https://github.com/vvmspace/hugo-seo-theme/">Hugo SEO Theme</a> for <a href="https://how2gpt.xyz">How2GPT.xyz</a></p>{{ end }}
 {{ with .Site.Params.netlify_deployment_status_badge }}
 <p>
     <img src="{{ . }}" alt="Netlify Status" />
