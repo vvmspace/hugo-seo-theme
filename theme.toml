@@ -1,6 +1,6 @@
 # theme.toml template for a Hugo theme
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
-
+version = "v0.1.0"
 name = "Hugo Bear Blog"
 license = "MIT"
 licenselink = "https://github.com/janraasch/hugo-bearblog/blob/master/LICENSE"
@@ -23,10 +23,3 @@ min_version = "v0.110.0"
   name = "ʕ•ᴥ•ʔ Bear Blog"
   homepage = "https://bearblog.dev"
   repo = "https://github.com/HermanMartinus/bearblog"
-
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.extensions]
-      [markup.goldmark.extensions.passthrough]
-        [markup.goldmark.extensions.passthrough.delimiters]
-          block = [['\[', '\]'], ['$$', '$$'], ['$', '$']]
