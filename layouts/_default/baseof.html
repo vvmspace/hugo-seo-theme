@@ -8,6 +8,16 @@
   {{ with .Site.Params.googleSiteVerification -}}
   <meta name="google-site-verification" content="{{ . }}" />
   {{ end -}}
+  {{ with .Site.Params.googleAnalytics -}}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '{{ . }}');
+  </script>
+  {{ end }}
   {{- partial "favicon.html" . -}}
   <title>{{- block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{- end }}</title>
 
